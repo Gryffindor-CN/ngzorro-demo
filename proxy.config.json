@@ -1,0 +1,29 @@
+{
+    "/admin": {
+        "target": "https://beta-admin.ctego.com",
+        "secure": false,
+        "changeOrigin": true,
+        "pathRewrite": {
+            "^/admin": ""
+        },
+        "logLevel": "debug"
+    },
+    "/oauth": {
+        "target": "https://beta-suid.ctego.com",
+        "secure": false,
+        "changeOrigin": true,
+        "pathRewrite": {
+            "^/oauth": ""
+        },
+        "logLevel": "debug"
+    },
+    "/district": {
+        "target": "https://apis.map.qq.com/ws/district/v1",
+        "secure": false,
+        "changeOrigin": true,
+        "pathRewrite": {
+            "^/district": ""
+        },
+        "logLevel": "debug"
+    }
+}
