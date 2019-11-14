@@ -1,0 +1,22 @@
+<nz-layout class="app-layout">
+    <nz-sider class="menu-sidebar" nzCollapsible nzWidth="200px" nzBreakpoint="md" [(nzCollapsed)]="isCollapsed"
+        [nzTrigger]="null">
+        <app-sider [isCollapsed]="isCollapsed" [menus]="menus"></app-sider>
+    </nz-sider>
+    <nz-layout>
+        <nz-header>
+            <app-header [isCollapsed]="isCollapsed" (triggle)="handleToggle()"></app-header>
+        </nz-header>
+        <nz-content>
+            <div class="inner-content">
+                <router-outlet></router-outlet>
+            </div>
+        </nz-content>
+        <nz-footer>
+            <Footer class="app-footer">
+                <p>帮助 | 隐私 | 条款</p>
+                <p>copyright &copy; ABC 公司</p>
+            </Footer>
+        </nz-footer>
+    </nz-layout>
+</nz-layout>

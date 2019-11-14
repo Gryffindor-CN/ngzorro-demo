@@ -1,0 +1,18 @@
+.table-page {
+    .table-page-info {
+        float: left;
+        .info {
+            margin-right: 10px;
+        }
+        .primary {
+            color: var(--primary);
+        }
+        .ant-select-sm {
+            margin: 0 10px;
+        }
+    }
+    .table-page-wrapper {
+        float: right;
+        margin-left: 10px;
+    }
+}

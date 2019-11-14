@@ -1,0 +1,58 @@
+nz-sider {
+background: rgba(255, 255, 255, 1);
+color: #fff;
+line-height: 120px;
+}
+
+nz-content {
+background: rgba(255, 255, 255, 1);
+}
+
+nz-layout {
+margin-bottom: 48px;
+}
+
+nz-layout:last-child {
+margin: 0;
+}
+.ant-list {
+    width: 100%;
+}
+.ant-list-split .ant-list-item:last-child {
+    border-bottom: 1px solid #e8e8e8;
+}
+.account-settings-content-wrapper {
+    flex: 1 1;
+    padding: 8px 40px;
+    .base-title {
+        color: rgba(0,0,0,.85);
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 28px;
+    }
+    .base-view {
+        display: flex;
+        padding-top: 12px;
+        .basw-view-left {
+            min-width: 206px;
+            max-width: 307px;
+        }
+        .basw-view-right {
+            flex: 1 1;
+            padding-left: 104px;
+            .avatar-title {
+                height: 22px;
+                margin-bottom: 8px;
+                color: rgba(0,0,0,.85);
+                font-size: 12px;
+                line-height: 22px;
+            }
+            .avatar-wrapper {
+                width: 144px;
+                height: 144px;
+                margin-bottom: 12px;
+                overflow: hidden;
+            }
+        }
+    }
+}

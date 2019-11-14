@@ -1,0 +1,18 @@
+<nz-drawer [nzClosable]="closable" [nzVisible]="visible" [nzMaskClosable]="maskClosable" [nzMask]="showMask"
+    [nzWidth]="width" [nzZIndex]="zIndex" (nzOnClose)="closeDrawer()">
+    <div class="drawer-header">
+        {{ title }}
+    </div>
+    <div class="drawer-content">
+        <ng-content select="[drawer-content]"></ng-content>
+    </div>
+    <div class="drawer-footer">
+        <div class="footer-btns">
+            <button nz-button nzSize="default" nzType="default" (click)="closeDrawer()">{{ cancelText }}</button>
+            <button nz-button nzSize="default" nzType="primary" (click)="saveDrawer()"
+                [nzLoading]="saveButtonLoading">{{ saveText }}</button>
+        </div>
+    </div>
+    <div class="divider header-divider"></div>
+    <div class="divider footer-divider"></div>
+</nz-drawer>

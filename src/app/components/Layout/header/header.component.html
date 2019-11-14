@@ -1,0 +1,62 @@
+<div class="app-header">
+  <span class="header-trigger" (click)="triggle.emit()">
+    <app-icon type="menu-fold" size="20" *ngIf="!isCollapsed"></app-icon>
+    <app-icon type="menu-unfold" size="20" *ngIf="isCollapsed"></app-icon>
+  </span>
+
+  <div class="setting">
+    <!-- <span *ngIf="isLoggedInState">
+      <span>
+          <app-icon type="user"></app-icon>
+      </span>
+      <span>{{ username }}</span>
+      </span>
+      <span *ngIf="isLoggedInState">
+          <a (click)="logout()">退出登录</a>
+      </span> -->
+    <ul class="setting-ul clearfix">
+      <li>
+        <app-icon type="search" size="16"></app-icon>
+      </li>
+      <li>
+        <!-- <span nzTooltip nzTooltipTitle="使用文档" nzTooltipPlacement="bottom">
+          <app-icon type="question-circle"></app-icon>
+        </span> -->
+        <nz-tooltip nzTooltipTitle="使用文档" nzTooltipPlacement="bottom">
+          <app-icon type="question-circle" size="16"></app-icon>
+        </nz-tooltip>
+      </li>
+      <li>
+        <nz-badge [nzCount]="5">
+          <app-icon type="bell" size="16"></app-icon>
+        </nz-badge>
+      </li>
+      <li class="username">
+        <span nz-dropdown [nzDropdownMenu]="menu">
+          <nz-avatar nzIcon="user" [nzSize]="20"></nz-avatar>
+          {{ username }}
+          {{ user$ | async }}
+        </span>
+        <nz-dropdown-menu #menu="nzDropdownMenu">
+          <ul nz-menu nzSelectable>
+            <li nz-menu-item class="ant-dropdown-menu-item-selected">个人中心</li>
+            <li nz-menu-item>个人设置</li>
+            <li nz-menu-item (click)="logout()">退出登录</li>
+          </ul>
+        </nz-dropdown-menu>
+      </li>
+      <!-- <li>
+        <span nz-dropdown [nzDropdownMenu]="menu">
+          <app-icon type="global" size="16"></app-icon>
+        </span>
+        <nz-dropdown-menu #menu="nzDropdownMenu">
+          <ul nz-menu nzSelectable>
+            <li nz-menu-item>简体中文</li>
+            <li nz-menu-item>繁体中文</li>
+            <li nz-menu-item>English</li>
+          </ul>
+        </nz-dropdown-menu>
+      </li> -->
+    </ul>
+  </div>
+</div>

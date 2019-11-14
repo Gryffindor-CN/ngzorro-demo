@@ -1,0 +1,18 @@
+<div class="table-page clearfix">
+    <div class="table-page-info">
+        <span class="info">共 {{ total }} 条记录</span>
+        <span class="info">第 <span class="primary">{{ current }}</span> / {{ totalPage }} 页</span>
+        <span>每页显示</span>
+        <nz-select [(ngModel)]="selectedValue" [nzAllowClear]="'false'" nzPlaceHolder="Choose" [nzSize]="'small'"
+            [nzAutoClearSearchValue]="'false'" (ngModelChange)="doPageSizeChange()">
+            <nz-option *ngFor="let value of selectOption" [nzValue]="value" [nzLabel]="value">
+            </nz-option>
+        </nz-select>
+        <span>条</span>
+    </div>
+    <div class="table-page-wrapper">
+        <nz-pagination [(nzPageIndex)]="current" [nzTotal]="total" [nzSize]="'small'" [nzPageSize]='pageSize'
+            [nzShowSizeChanger]="'false'" nzShowQuickJumper (nzPageIndexChange)="doPageIndexChange($event)">
+        </nz-pagination>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+<app-content-wrapper title='卡片' [content]="content">
+    <app-card content-wrapper>
+        <div card-content-wrapper>
+            <div style="width:300px;display: inline-block;">
+                <app-card [title]="'卡片标题'" [bordered]="'true'" [extra]="extra" [loading]="'false'"
+                    (onExtraClick)="extraclick()">
+                    <h1 card-content-wrapper-title>卡片内容</h1>
+                </app-card>
+            </div>
+
+            <div style="width:300px;margin-left:20px;display: inline-block;">
+                <app-card [extra]="extra" [bordered]="'true'" [loading]="'false'">
+                    <h1 card-content-wrapper>卡片内容</h1>
+                </app-card>
+            </div>
+            <div style="width:400px;margin-left:20px;display: inline-block;">
+                <app-card [title]="title" [bordered]="'true'" [loading]="'false'" (onTabclick)="tabclick($event)">
+                    <h1 card-extra-content-wrapper>卡片内容{{tab}}</h1>
+                </app-card>
+            </div>
+        </div>
+    </app-card>
+</app-content-wrapper>

@@ -1,0 +1,53 @@
+<div class="inner-content">
+    <app-content-wrapper [title]="'订单管理'" [buttonGroup]="buttonGroup" [content]="contentWrapper"
+        [extraContent]="wrapExtraContent" [tabs]="tabs" (tabSelect)="handleTabSelect($event)" showSearchBar="true">
+        <app-card content-wrapper>
+            <div card-content-wrapper>
+                <ng-container *ngIf="selectedTab === 0">
+                    <div class="main">
+                        <div class="row">
+                            <div class="content" *ngIf="!advSearch">
+                                <app-basic-form (voted)="handleFilter($event)">
+                                </app-basic-form>
+                            </div>
+                            <div class="extra" (click)="toggleAdvSearch()">
+                                <span>高级搜索</span>
+                                <app-icon *ngIf="!advSearch" type="down"></app-icon>
+                                <app-icon *ngIf="advSearch" type="up"></app-icon>
+                            </div>
+                        </div>
+                        <div *ngIf="advSearch">
+                            <app-advance-form></app-advance-form>
+                        </div>
+                    </div>
+                    <app-table-virtual [data]="listOfDisplayData" [loading]="loading" [pageSize]="pageSize"
+                        (handleAgeSort)="handleAgeSort($event)" (handleDrawerOpen)="openDrawer()">
+                        loading
+                    </app-table-virtual>
+                    <div style="height: 20px;"></div>
+                    <app-table-page [total]="total" [totalPage]="totalPage" [current]="current" [pageSize]="pageSize"
+                        (handlePageIndexChange)="handlePageIndexChange($event)"
+                        (handlePageSizeChange)="handlePageSizeChange($event)">
+                    </app-table-page>
+                </ng-container>
+                <ng-container *ngIf="selectedTab === 1">
+                    <div>物流Tab</div>
+                </ng-container>
+            </div>
+        </app-card>
+    </app-content-wrapper>
+
+    <app-table-drawer [visible]="tableDrawer" [title]="'drawer'" [saveButtonLoading]="saveButtonLoading"
+        (onSave)="saveDrawer()" (onClose)="closeDrawer()">
+        <div drawer-content>
+            <form nz-form [formGroup]="validateForm">
+                <nz-form-item>
+                    <nz-form-label [nzSpan]="6" nzFor="email">E-mail</nz-form-label>
+                    <nz-form-control [nzSpan]="14">
+                        <input nz-input formControlName="email" name="email" type="email" id="email">
+                    </nz-form-control>
+                </nz-form-item>
+            </form>
+        </div>
+    </app-table-drawer>
+</div>

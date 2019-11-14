@@ -1,0 +1,129 @@
+<app-content-wrapper title="分步表单" [content]="content">
+    <app-card content-wrapper>
+        <div card-content-wrapper>
+            <div class="step-form-wrapper">
+                <div class="step-process">
+                    <nz-steps [nzCurrent]="current">
+                        <nz-step nzTitle="填写转账信息"></nz-step>
+                        <nz-step nzTitle="确认转账信息"></nz-step>
+                        <nz-step nzTitle="完成"></nz-step>
+                    </nz-steps>
+                </div>
+                <div class="form-process" *ngIf="current === 0">
+                    <form nz-form [formGroup]="validateForm">
+                        <nz-form-item nz-row>
+                            <nz-form-label nz-col nzFor="email" [nzXs]="grid.label.xs" [nzSm]="grid.label.sm">付款账户
+                            </nz-form-label>
+                            <nz-form-control nz-col [nzXs]="grid.value.xs" [nzSm]="grid.value.sm"
+                                [nzMd]="grid.value.md">
+                                <nz-select nzShowSearch nzPlaceHolder="Select a person" [(ngModel)]="selectedValue"
+                                    formControlName="select">
+                                    <nz-option nzLabel="ant-design@alipay.com" nzValue="1"></nz-option>
+                                </nz-select>
+                            </nz-form-control>
+                        </nz-form-item>
+                        <nz-form-item nz-row>
+                            <nz-form-label nz-col nzFor="email" [nzXs]="grid.label.xs" [nzSm]="grid.label.sm">收款账户
+                            </nz-form-label>
+                            <nz-form-control nz-col [nzXs]="grid.value.xs" [nzSm]="grid.value.sm"
+                                [nzMd]="grid.value.md">
+                                <nz-input-group [nzAddOnBefore]="addOnBeforeTemplate">
+                                    <ng-template #addOnBeforeTemplate>
+                                        <nz-select class="phone-select" [ngModel]="phonenum" formControlName="phonenum">
+                                            <nz-option nzLabel="支付宝" nzValue="1"></nz-option>
+                                            <nz-option nzLabel="银行账户" nzValue="2"></nz-option>
+                                        </nz-select>
+                                    </ng-template>
+                                    <input id="'phoneNumber'" value="tesst@example.com" nz-input />
+                                </nz-input-group>
+                            </nz-form-control>
+                        </nz-form-item>
+                        <nz-form-item nz-row>
+                            <nz-form-label nz-col nzFor="email" [nzXs]="grid.label.xs" [nzSm]="grid.label.sm">收款人姓名
+                            </nz-form-label>
+                            <nz-form-control nz-col [nzXs]="grid.value.xs" [nzSm]="grid.value.sm"
+                                [nzMd]="grid.value.md">
+                                <input nz-input id="name" value="Alex" />
+                            </nz-form-control>
+                        </nz-form-item>
+                        <nz-form-item nz-row>
+                            <nz-form-label nz-col nzFor="email" [nzXs]="grid.label.xs" [nzSm]="grid.label.sm">转账金额
+                            </nz-form-label>
+                            <nz-form-control nz-col [nzXs]="grid.value.xs" [nzSm]="grid.value.sm" [nzMd]="grid.value.md"
+                                [nzErrorTip]="moneyErrorTpl">
+                                <nz-input-group [nzPrefix]="prefixTemplate">
+                                    <input type="text" [(ngModel)]="money" id="money" formControlName="money" nz-input
+                                        placeholder="请输入转账金额" />
+                                    <ng-template #moneyErrorTpl let-control>
+                                        <ng-container *ngIf="control.hasError('required')">
+                                            请输入转账金额
+                                        </ng-container>
+                                        <ng-container *ngIf="control.hasError('money')">
+                                            请输入合法金额数字
+                                        </ng-container>
+                                    </ng-template>
+                                </nz-input-group>
+                                <ng-template #prefixTemplate>￥</ng-template>
+                            </nz-form-control>
+                        </nz-form-item>
+                        <nz-form-item nz-row clss="form-btns">
+                            <nz-form-control nz-col [nzXs]="grid.btn.xs" [nzSm]="grid.btn.sm">
+                                <button nz-button nzType="primary" (click)="next()">下一步</button>
+                            </nz-form-control>
+                        </nz-form-item>
+                    </form>
+                </div>
+                <div class="form-fill-comfirm" *ngIf="current === 1">
+                    <nz-alert nzType="info" nzMessage="确认转账后，资金将直接打入对方账户，无法退回。" nzShowIcon nzCloseText="x"
+                        style="margin-top: 40px;"></nz-alert>
+                    <nz-descriptions [nzColumn]="column" style="margin-top: 30px;">
+                        <nz-descriptions-item [nzTitle]="'付款账户'" style="font-size: 14px;">ant-design@alipay.com
+                        </nz-descriptions-item>
+                        <nz-descriptions-item nzTitle="收款账户">test@example.com</nz-descriptions-item>
+                        <nz-descriptions-item nzTitle="收款人姓名">Alex</nz-descriptions-item>
+                        <nz-descriptions-item nzTitle="转账金额"><span style="font-size: 22px;">{{money}}</span> 元
+                        </nz-descriptions-item>
+                    </nz-descriptions>
+                    <nz-divider></nz-divider>
+                    <div style="width:100%;margin:0 auto">
+                        <form nz-form [formGroup]="passwordForm">
+                            <nz-form-item nz-row>
+                                <nz-form-label nz-col nzFor="email" [nzXs]="grid.label.xs" [nzSm]="grid.label.sm">支付密码
+                                </nz-form-label>
+                                <nz-form-control nz-col [nzXs]="grid.value.xs" [nzSm]="grid.value.sm"
+                                    [nzMd]="grid.value.md" nzErrorTip="需要支付密码才能进行支付">
+                                    <input nz-input [type]="'password'" formControlName="password" [(ngModel)]="pwd">
+                                </nz-form-control>
+                            </nz-form-item>
+                            <nz-form-item nz-row clss="form-btns">
+                                <nz-form-control nz-col [nzXs]="grid.btn.xs" [nzSm]="grid.btn.sm">
+                                    <button nz-button nzType="primary" [nzLoading]="btnLoading"
+                                        (click)="next()">提交</button>
+                                    <button nz-button nzType="default" style="margin-left:8px;"
+                                        (click)="prev()">上一步</button>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </form>
+                    </div>
+                </div>
+                <div class="result" *ngIf="current === 2">
+                    <nz-result nzStatus="success" nzTitle="操作成功" nzSubTitle="预计两小时内到账">
+                        <div nz-result-content style="padding: 2px 40px">
+                            <nz-descriptions [nzColumn]="column" style="margin-top: 30px;">
+                                <nz-descriptions-item [nzTitle]="'付款账户'">ant-design@alipay.com</nz-descriptions-item>
+                                <nz-descriptions-item nzTitle="收款账户">test@example.com</nz-descriptions-item>
+                                <nz-descriptions-item nzTitle="收款人姓名">Alex</nz-descriptions-item>
+                                <nz-descriptions-item nzTitle="转账金额"><span style="font-size: 22px;">{{money}}</span> 元
+                                </nz-descriptions-item>
+                            </nz-descriptions>
+                        </div>
+                        <div nz-result-extra>
+                            <button nz-button nzType="primary" (click)="reset($event)">再转一笔</button>
+                            <button nz-button nzType="default" style="margin-left:8px;">查看账单</button>
+                        </div>
+                    </nz-result>
+                </div>
+            </div>
+        </div>
+    </app-card>
+</app-content-wrapper>

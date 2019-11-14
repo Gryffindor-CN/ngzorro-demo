@@ -1,0 +1,32 @@
+<div class="card-wrapper">
+    <ng-container *ngIf="title === undefined">
+        <nz-card [nzBordered]="bordered" [nzLoading]="loading" [nzBodyStyle]="bodyStyle" [nzHoverable]="hoverable">
+            <ng-content select=[card-content-wrapper]>
+            </ng-content>
+        </nz-card>
+    </ng-container>
+    <ng-container *ngIf="title && !titleIsArray">
+        <nz-card [nzBordered]="bordered" [nzLoading]="loading" [nzExtra]="extraTemplate" [nzBodyStyle]="bodyStyle"
+            [nzTitle]="title" [nzHoverable]="hoverable">
+            <ng-content select=[card-content-wrapper-title]>
+            </ng-content>
+        </nz-card>
+    </ng-container>
+
+    <ng-container *ngIf="title && titleIsArray">
+        <nz-card [nzHoverable]="hoverable" [nzBordered]="bordered" [nzLoading]="loading">
+            <nz-card-tab>
+                <nz-tabset nzSize="large" (nzSelectedIndexChange)="tabSelectedChange($event)">
+                    <nz-tab [nzTitle]="tab.title" [nzDisabled]="tab.disabled" *ngFor="let tab of title">
+                    </nz-tab>
+                </nz-tabset>
+            </nz-card-tab>
+            <ng-content select=[card-extra-content-wrapper]>
+            </ng-content>
+        </nz-card>
+    </ng-container>
+
+    <ng-template #extraTemplate>
+        <a *ngIf="!titleIsArray" (click)="extraTitleClick()">{{extra}}</a>
+    </ng-template>
+</div>

@@ -1,0 +1,33 @@
+<div style="width:100%">
+    <div class="sidebar-logo">
+        <a href="https://ng.ant.design/" target="_blank">
+            <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
+            <h1>Ant Design Of Angular</h1>
+        </a>
+    </div>
+    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+        <ng-container *ngFor="let menu of _menus">
+            <li *ngIf="menu.children" [nzMenuClassName]="'abc'" nz-submenu nzOpen [nzTitle]="menu.text"
+                [nzIcon]="menu.icon">
+                <ul>
+                    <ng-container *ngFor="let secmenu of menu.children">
+                        <li nz-menu-item nz-tooltip nzPlacement="right" [nzMatchRouter]="'true'">
+                            <a [routerLink]="secmenu.to">
+                                <i nz-icon [nzType]="secmenu.icon"></i>
+                                <span>{{secmenu.text}}</span>
+                            </a>
+                        </li>
+                    </ng-container>
+                </ul>
+            </li>
+            <ng-container *ngIf="!menu.children">
+                <li nz-menu-item [nzMatchRouter]="'true'">
+                    <a [routerLink]="menu.to">
+                        <i nz-icon [nzType]="menu.icon"></i>
+                        <span>{{menu.text}}</span>
+                    </a>
+                </li>
+            </ng-container>
+        </ng-container>
+    </ul>
+</div>

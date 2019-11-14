@@ -1,0 +1,49 @@
+<nz-table #columnTable [nzData]="data" [nzPageSize]="pageSize" [nzScroll]="{ x: '2270px',y:'400px' }"
+  [nzShowPagination]="'false'" [nzLoading]="loading">
+  <thead nzSingleSort (nzSortChange)="sort($event)">
+    <tr>
+      <th nzWidth="60px" nzLeft="0px">序号</th>
+      <th nzWidth="160px" nzLeft="51px" nzShowSort nzSortKey="number">订单编号</th>
+      <th nzWidth="100px" nzShowFilter [nzFilters]="listOfState" (nzFilterChange)="filter($event)">订单状态</th>
+      <th nzWidth="200px">下单时间</th>
+      <th nzWidth="100px">下单类型</th>
+      <th nzWidth="150px">下单人</th>
+      <th nzWidth="150px">归属人</th>
+      <th nzWidth="150px">客户账号</th>
+      <th nzWidth="100px">客户类型</th>
+      <th nzWidth="200px">企业名称</th>
+      <th nzWidth="100px">支付类型</th>
+      <th nzWidth="100px">支付方式</th>
+      <th nzWidth="200px">支付时间</th>
+      <th nzAlign="right" nzWidth="100px">优惠券</th>
+      <th nzAlign="right" nzWidth="100px">运费</th>
+      <th nzAlign="right" nzWidth="100px">金额</th>
+      <th nzWidth="150px" nzRight="0px">操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of data">
+      <td nzWidth="60px" nzLeft="0px">{{ data.key }}</td>
+      <td nzWidth="160px" nzLeft="51px">{{ data.number }}</td>
+      <td nzWidth="100px">{{ data.state }}</td>
+      <td nzWidth="200px">{{ data.createTime }}</td>
+      <td nzWidth="100px">{{ data.createType }}</td>
+      <td nzWidth="150px">{{ data.createUser }}</td>
+      <td nzWidth="150px">{{ data.userAccount }}</td>
+      <td nzWidth="150px">{{ data.userPhone }}</td>
+      <td nzWidth="100px">{{ data.userType }}</td>
+      <td nzWidth="100px">{{ data.companyName }}</td>
+      <td nzWidth="100px">{{ data.payType }}</td>
+      <td nzWidth="100px">{{ data.payMode }}</td>
+      <td nzWidth="200px">{{ data.paymentTime }}</td>
+      <td nzWidth="100px" nzAlign="right">{{ data.couponPrice }}</td>
+      <td nzWidth="100px" nzAlign="right">{{ data.freightPrice }}</td>
+      <td nzWidth="100px" nzAlign="right">{{ data.payableTotal }}</td>
+      <td nzWidth="150px" nzRight="0px" class="table-btns">
+        <a (click)="openDrawer()">drawer</a>
+        <span> - </span>
+        <a>action</a>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

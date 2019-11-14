@@ -1,0 +1,36 @@
+<nz-result nzStatus="success" nzTitle="提交成功"
+    nzSubTitle="提交结果页用于反馈一系列操作任务的处理结果， 如果仅是简单操作，使用 Message 全局提示反馈即可。 本文字区域可以展示简单的补充说明，如果有类似展示 “单据”的需求，下面这个灰色区域可以呈现比较复杂的内容。">
+    <div nz-result-content>
+        <nz-descriptions style="margin-bottom:20px;">
+            <nz-descriptions-item nzTitle="项目 ID">123456</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="负责人">曲丽丽</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="	生效时间">2016-12-12 ~ 2017-12-12</nz-descriptions-item>
+        </nz-descriptions>
+        <nz-steps [nzCurrent]="1" [nzProgressDot]="'true'">
+            <nz-step nzTitle="创建项目" [nzDescription]="descriptionOne"></nz-step>
+            <nz-step nzTitle="部门初审" [nzDescription]="descriptionTwo"></nz-step>
+            <nz-step nzTitle="财务复核"></nz-step>
+            <nz-step nzTitle="完成"></nz-step>
+        </nz-steps>
+        <ng-template #descriptionOne>
+            <span style="display:block;margin: 4px 0">曲丽丽<app-icon type="dingding-o" style="margin-left:10px;">
+                </app-icon></span>
+            <span style="display:block;margin: 4px 0">2016-12-12 12：32</span>
+        </ng-template>
+        <ng-template #descriptionTwo>
+            <div style="margin-top: 4px;">
+                <span>周毛毛</span>
+                <a>
+                    <app-icon type="dingding-o" style="margin-left:10px;"></app-icon>
+                    催一下
+                </a>
+            </div>
+
+        </ng-template>
+    </div>
+    <div nz-result-extra>
+        <button nz-button nzType="primary">返回列表</button>
+        <button nz-button>查看项目</button>
+        <button nz-button>打印</button>
+    </div>
+</nz-result>

@@ -1,0 +1,21 @@
+.ant-form-inline .ant-form-item {
+    margin-right: 0px;
+    margin-bottom: 16px;
+    padding: 0 8px;
+
+    .ant-form-item-control-wrapper {
+        width: calc(100% - 100px) !important;
+    }
+    .ant-form-item-label {
+        text-align: left;
+        width: 100px;
+    }
+}
+
+.ant-btn-primary {
+    margin-right: 10px;
+}
+.form-btns {
+    margin-left: 108px;
+    margin-top: 5px;
+}

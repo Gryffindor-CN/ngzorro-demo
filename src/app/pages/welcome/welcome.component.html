@@ -1,0 +1,171 @@
+<app-content-wrapper title="基础表单" [content]="content">
+    <app-card content-wrapper>
+        <div card-content-wrapper>
+            <form nz-form [formGroup]="validateForm">
+                <nz-form-item nz-row>
+                    <nz-form-label nz-col nzFor="email" [nzXs]="grid.label.xs" [nzSm]="grid.label.sm">标题
+                    </nz-form-label>
+                    <nz-form-control nz-col [nzXs]="grid.value.xs" [nzSm]="grid.value.sm" [nzMd]="grid.value.md"
+                        nzErrorTip="请输入标题">
+                        <input nz-input formControlName="target" placeholder="给目标起个名字" />
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item nz-row>
+                    <nz-form-label nz-col nzFor="email" [nzXs]="grid.label.xs" [nzSm]="grid.label.sm">起止日期
+                    </nz-form-label>
+                    <nz-form-control nz-col [nzXs]="grid.value.xs" [nzSm]="grid.value.sm" [nzMd]="grid.value.md"
+                        nzErrorTip="请选择起止日期">
+                        <nz-range-picker [nzStyle]="calendarPickerStyle" formControlName="time"></nz-range-picker>
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item nz-row>
+                    <nz-form-label nz-col nzFor="email" [nzXs]="grid.label.xs" [nzSm]="grid.label.sm">目标描述
+                    </nz-form-label>
+                    <nz-form-control nz-col [nzXs]="grid.value.xs" [nzSm]="grid.value.sm" [nzMd]="grid.value.md"
+                        nzErrorTip="请填写目标描述">
+                        <textarea nz-input formControlName="description"
+                            placeholder="Autosize height with minimum and maximum number of lines"
+                            [nzAutosize]="{ minRows: 3, maxRows: 6 }"></textarea>
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item nz-row>
+                    <nz-form-label nz-col [nzXs]="grid.label.xs" [nzSm]="grid.label.sm">订单号<span
+                            class="optional">（选填）</span>
+                        <span><i nz-icon nz-tooltip nzTitle="订单号订单号订单号订单号订单号" nzType="question-circle"
+                                nzTheme="outline"></i></span>
+                    </nz-form-label>
+                    <nz-form-control nz-col [nzXs]="grid.value.xs" [nzSm]="grid.value.sm" [nzMd]="grid.value.md"
+                        nzErrorTip="请填写订单号">
+                        <input nz-input formControlName="ordernumber" placeholder="请输入订单号" />
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item nz-row>
+                    <nz-form-label nz-col nzFor="email" [nzXs]="grid.label.xs" [nzSm]="grid.label.sm">电话号码
+                    </nz-form-label>
+                    <nz-form-control nz-col [nzXs]="grid.value.xs" [nzSm]="grid.value.sm" [nzMd]="grid.value.md"
+                        nzErrorTip="请填写电话号码">
+                        <nz-input-group [nzAddOnBefore]="addOnBeforeTemplate">
+                            <ng-template #addOnBeforeTemplate>
+                                <nz-select class="phone-select" formControlName="phonenum">
+                                    <nz-option nzLabel="+86" nzValue="+86"></nz-option>
+                                    <nz-option nzLabel="+87" nzValue="+87"></nz-option>
+                                </nz-select>
+                            </ng-template>
+                            <input formControlName="phoneNumber" nz-input />
+                        </nz-input-group>
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item nz-row>
+                    <nz-form-label nz-col [nzXs]="grid.label.xs" [nzSm]="grid.label.sm">选择<span
+                            class="optional">（选填）</span>
+                    </nz-form-label>
+                    <nz-form-control nz-col [nzXs]="grid.value.xs" [nzSm]="grid.value.sm" [nzMd]="grid.value.md"
+                        nzErrorTip="请选择">
+                        <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a person" formControlName="select">
+                            <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
+                            <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
+                            <nz-option nzLabel="Tom" nzValue="tom"></nz-option>
+                        </nz-select>
+                    </nz-form-control>
+                </nz-form-item>
+
+
+                <nz-form-item nz-row>
+                    <nz-form-label nz-col [nzXs]="grid.label.xs" [nzSm]="grid.label.sm">选择<span
+                            class="optional">（选填）</span>
+                    </nz-form-label>
+                    <nz-form-control nz-col [nzXs]="grid.value.xs" [nzSm]="grid.value.sm" [nzMd]="grid.value.md"
+                        nzErrorTip="请选择">
+                        <nz-select style="width: 100%" nzMode="multiple" nzPlaceHolder="Please select"
+                            formControlName="multiselect" nzServerSearch [nzShowArrow]="false"
+                            (nzOnSearch)="search($event)">
+                            <nz-option *ngFor="let option of listOfOption" [nzLabel]="option.label"
+                                [nzValue]="option.value"></nz-option>
+                        </nz-select>
+                    </nz-form-control>
+                </nz-form-item>
+
+
+                <nz-form-item nz-row>
+                    <nz-form-label nz-col nzFor="email" [nzXs]="grid.label.xs" [nzSm]="grid.label.sm">时间
+                    </nz-form-label>
+                    <nz-form-control nz-col [nzXs]="grid.value.xs" [nzSm]="grid.value.sm" [nzMd]="grid.value.md"
+                        nzErrorTip="请选择时间">
+                        <nz-time-picker style="width: 100%" formControlName="timepicker"
+                            [nzDefaultOpenValue]="defaultOpenValue">
+                        </nz-time-picker>
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item nz-row>
+                    <nz-form-label nz-col nzFor="email" [nzXs]="grid.label.xs" [nzSm]="grid.label.sm">树选择
+                    </nz-form-label>
+                    <nz-form-control nz-col [nzXs]="grid.value.xs" [nzSm]="grid.value.sm" [nzMd]="grid.value.md"
+                        nzErrorTip="请选择">
+                        <nz-tree-select formControlName="tree" [nzExpandedKeys]="expandKeys" [nzNodes]="nodes"
+                            nzShowSearch nzPlaceHolder="Please select" (ngModelChange)="onChange($event)">
+                        </nz-tree-select>
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item nz-row>
+                    <nz-form-label nz-col nzFor="email" [nzXs]="grid.label.xs" [nzSm]="grid.label.sm">提及
+                    </nz-form-label>
+                    <nz-form-control nz-col [nzXs]="grid.value.xs" [nzSm]="grid.value.sm" [nzMd]="grid.value.md"
+                        nzErrorTip="请提及">
+                        <nz-mention [nzSuggestions]="suggestions" (nzOnSelect)="onSelect($event)">
+                            <input placeholder="input here" nzMentionTrigger nz-input (ngModelChange)="onChange($event)"
+                                formControlName="mention" />
+                        </nz-mention>
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item nz-row>
+                    <nz-form-label nz-col [nzXs]="grid.label.xs" [nzSm]="grid.label.sm">上传
+                    </nz-form-label>
+                    <nz-form-control nz-col [nzXs]="grid.value.xs" [nzSm]="grid.value.sm" [nzMd]="grid.value.md">
+                        <nz-upload nzAction="https://jsonplaceholder.typicode.com/posts/">
+                            <button nz-button><i nz-icon nzType="upload"></i><span>文件</span></button>
+                        </nz-upload>
+                    </nz-form-control>
+                </nz-form-item>
+
+                <nz-form-item nz-row>
+                    <nz-form-label nz-col [nzXs]="grid.label.xs" [nzSm]="grid.label.sm">权重
+                    </nz-form-label>
+                    <nz-form-control nz-col [nzXs]="grid.value.xs" [nzSm]="grid.value.sm" [nzMd]="grid.value.md"
+                        nzErrorTip="The input is not valid E-mail!">
+                        <nz-input-number [nzMin]="1" [nzMax]="10" [nzStep]="1">
+                        </nz-input-number> %
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item nz-row>
+                    <nz-form-label nz-col [nzXs]="grid.label.xs" [nzSm]="grid.label.sm">目标公开
+                    </nz-form-label>
+                    <nz-form-control nz-col [nzXs]="grid.value.xs" [nzSm]="grid.value.sm" [nzMd]="grid.value.md"
+                        nzErrorTip="请选择">
+                        <nz-radio-group formControlName="radioValue">
+                            <label nz-radio nzValue="A">公开</label>
+                            <label nz-radio nzValue="B">部分公开</label>
+                            <label nz-radio nzValue="C">不公开</label>
+                        </nz-radio-group>
+                        <div *ngIf="radioValue === 'B'">
+                            <input nz-input id="group" placeholder="公开给" />
+                            <p>客户、邀评人人默认被分享</p>
+                        </div>
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item nz-row class="register-area">
+                    <nz-form-control [nzXs]="grid.btn.xs" [nzSm]="grid.btn.sm" nzErrorTip="请同意">
+                        <label nz-checkbox formControlName="agreement">
+                            <span>I have read the <a>agreement</a></span>
+                        </label>
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item nz-row clss="form-btns">
+                    <nz-form-control nz-col [nzXs]="grid.btn.xs" [nzSm]="grid.btn.sm">
+                        <button nz-button nzType="primary" (click)="submit($event)">提交</button>
+                        <button nz-button nzType="default" style="margin-left:8px;">保存</button>
+                    </nz-form-control>
+                </nz-form-item>
+            </form>
+        </div>
+    </app-card>
+</app-content-wrapper>

@@ -1,0 +1,300 @@
+<app-content-wrapper title="高级表单" [content]="content">
+    <div content-wrapper>
+        <div class="advance-form-card-wrapper">
+            <app-card title='仓库管理'>
+                <div card-content-wrapper-title>
+                    <nz-form-item nz-row [formGroup]="validateFirst">
+                        <div class="col-item" nz-col [nzLg]="grid.value.lg" [nzMd]="grid.value.md"
+                            [nzSm]="grid.value.sm" [nzXs]="grid.value.xs">
+                            <nz-form-label nzNoColon="'false'">仓库号
+                            </nz-form-label>
+                            <nz-form-control nzErrorTip="请输入仓库号">
+                                <input nz-input formControlName="number" placeholder="请输入仓库号" />
+                            </nz-form-control>
+                        </div>
+                        <div class="col-item" nz-col [nzLg]="{span:8}" [nzMd]="grid.value.md" [nzSm]="grid.value.sm"
+                            [nzXs]="grid.value.xs" [nzXl]="{span:6, offset: 2}">
+                            <nz-form-label nzNoColon="'false'">仓库域名
+                            </nz-form-label>
+                            <nz-form-control nzErrorTip="请输入仓库域名">
+                                <nz-input-group nzAddOnBefore="Http://" nzAddOnAfter=".com">
+                                    <input type="text" nz-input formControlName="domain" placeholder="请输入" />
+                                </nz-input-group>
+                            </nz-form-control>
+                        </div>
+                        <div class="col-item" nz-col [nzLg]="{span:10}" [nzMd]="grid.value.md" [nzSm]="grid.value.sm"
+                            [nzXs]="grid.value.xs" [nzXl]="{span:8, offset: 2}">
+                            <nz-form-label nzNoColon="'false'">仓库管理员
+                            </nz-form-label>
+                            <nz-form-control nzErrorTip="请选择仓库管理员">
+                                <nz-select nzShowSearch formControlName="manager" nzPlaceHolder="请选择管理员"
+                                    style="width:100%">
+                                    <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
+                                    <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
+                                    <nz-option nzLabel="Tom" nzValue="tom"></nz-option>
+                                </nz-select>
+                            </nz-form-control>
+                        </div>
+                        <div class="col-item" nz-col [nzLg]="grid.value.lg" [nzMd]="grid.value.md"
+                            [nzSm]="grid.value.sm" [nzXs]="grid.value.xs">
+                            <nz-form-label nzNoColon="'false'">审批员
+                            </nz-form-label>
+                            <nz-form-control nzErrorTip="请选择审批员">
+                                <nz-select nzShowSearch formControlName="approve" nzPlaceHolder="请选择审批员"
+                                    style="width:100%">
+                                    <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
+                                    <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
+                                    <nz-option nzLabel="Tom" nzValue="tom"></nz-option>
+                                </nz-select>
+                            </nz-form-control>
+                        </div>
+                        <div class="col-item" nz-col [nzLg]="{span:8}" [nzMd]="grid.value.md" [nzSm]="grid.value.sm"
+                            [nzXs]="grid.value.xs" [nzXl]="{span:6,offset:2}">
+                            <nz-form-label nzNoColon="'false'">生效日期
+                            </nz-form-label>
+                            <nz-form-control nzErrorTip="请选择生效日期">
+                                <nz-range-picker [nzStyle]="{width: '100%'}" formControlName="time"></nz-range-picker>
+                            </nz-form-control>
+                        </div>
+                        <div class="col-item" nz-col [nzLg]="{span:10}" [nzMd]="grid.value.md" [nzSm]="grid.value.sm"
+                            [nzXs]="grid.value.xs" [nzXl]="{span:8,offset:2}">
+                            <nz-form-label nzNoColon="'false'">仓库类型
+                            </nz-form-label>
+                            <nz-form-control nzErrorTip="请选择仓库类型">
+                                <nz-select formControlName="type" nzShowSearch nzPlaceHolder="请选择仓库类型"
+                                    style="width:100%">
+                                    <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
+                                    <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
+                                    <nz-option nzLabel="Tom" nzValue="tom"></nz-option>
+                                </nz-select>
+                            </nz-form-control>
+                        </div>
+                    </nz-form-item>
+                </div>
+            </app-card>
+        </div>
+
+        <div class="advance-form-card-wrapper">
+            <app-card title='任务管理'>
+                <div card-content-wrapper-title>
+                    <form nz-form [formGroup]="validateSecond">
+                        <nz-form-item nz-row>
+                            <div class="col-item" nz-col [nzLg]="grid.value.lg" [nzMd]="grid.value.md"
+                                [nzSm]="grid.value.sm" [nzXs]="grid.value.xs">
+                                <nz-form-label nzNoColon="'false'">任务名
+                                </nz-form-label>
+                                <nz-form-control nzErrorTip="请填写任务名">
+                                    <input nz-input formControlName="name" placeholder="请输入" />
+                                </nz-form-control>
+                            </div>
+                            <div class="col-item" nz-col [nzLg]="{span:8}" [nzMd]="grid.value.md" [nzSm]="grid.value.sm"
+                                [nzXs]="grid.value.xs" [nzXl]="{span:6, offset: 2}">
+                                <nz-form-label nzNoColon="'false'">任务描述
+                                </nz-form-label>
+                                <nz-form-control nzErrorTip="请填写任务描述">
+                                    <input nz-input formControlName="description" placeholder="请输入" />
+                                </nz-form-control>
+                            </div>
+                            <div class="col-item" nz-col [nzLg]="{span:10}" [nzMd]="grid.value.md"
+                                [nzSm]="grid.value.sm" [nzXs]="grid.value.xs" [nzXl]="{span:8, offset: 2}">
+                                <nz-form-label nzNoColon="'false'">执行人
+                                </nz-form-label>
+                                <nz-form-control nzErrorTip="请选择执行人">
+                                    <nz-select formControlName="executor" nzShowSearch nzPlaceHolder="请选择执行人"
+                                        style="width:100%">
+                                        <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
+                                        <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
+                                        <nz-option nzLabel="Tom" nzValue="tom"></nz-option>
+                                    </nz-select>
+                                </nz-form-control>
+                            </div>
+                            <div class="col-item" nz-col [nzLg]="grid.value.lg" [nzMd]="grid.value.md"
+                                [nzSm]="grid.value.sm" [nzXs]="grid.value.xs">
+                                <nz-form-label nzNoColon="'false'">责任人
+                                </nz-form-label>
+                                <nz-form-control nzErrorTip="请选择责任人">
+                                    <nz-select formControlName="response" nzShowSearch nzPlaceHolder="请选择审批员"
+                                        style="width:100%">
+                                        <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
+                                        <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
+                                        <nz-option nzLabel="Tom" nzValue="tom"></nz-option>
+                                    </nz-select>
+                                </nz-form-control>
+                            </div>
+                            <div class="col-item" nz-col [nzLg]="{span:8}" [nzMd]="grid.value.md" [nzSm]="grid.value.sm"
+                                [nzXs]="grid.value.xs" [nzXl]="{span:6,offset:2}">
+                                <nz-form-label nzNoColon="'false'">生效日期
+                                </nz-form-label>
+                                <nz-form-control nzErrorTip="请选择生效日期">
+                                    <nz-range-picker formControlName="time" [nzStyle]="{width: '100%'}">
+                                    </nz-range-picker>
+                                </nz-form-control>
+                            </div>
+                            <div class="col-item" nz-col [nzLg]="{span:10}" [nzMd]="grid.value.md"
+                                [nzSm]="grid.value.sm" [nzXs]="grid.value.xs" [nzXl]="{span:8,offset:2}">
+                                <nz-form-label nzNoColon="'false'">任务类型
+                                </nz-form-label>
+                                <nz-form-control nzErrorTip="请选择任务类型">
+                                    <nz-select formControlName="type" nzShowSearch nzPlaceHolder="请选择仓库类型"
+                                        style="width:100%">
+                                        <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
+                                        <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
+                                        <nz-option nzLabel="Tom" nzValue="tom"></nz-option>
+                                    </nz-select>
+                                </nz-form-control>
+                            </div>
+                        </nz-form-item>
+                    </form>
+                </div>
+            </app-card>
+        </div>
+
+        <div class="advance-form-card-wrapper">
+            <app-card title='成员管理'>
+                <div card-content-wrapper-title>
+                    <nz-table #editRowTable nzShowPagination="false" [nzData]="listOfData" [nzLoading]="tableLoading">
+                        <thead>
+                            <tr>
+                                <th nzWidth="25%">成员姓名</th>
+                                <th nzWidth="15%">工号</th>
+                                <th nzWidth="40%">所属部门</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let data of listOfData">
+                                <td>
+                                    <ng-container *ngIf="!editCache[data.id].edit; else nameInputTpl">
+                                        {{ data.name }}
+                                    </ng-container>
+                                    <ng-template #nameInputTpl>
+                                        <div class="example-input">
+                                            <form nz-form [formGroup]="editCache[data.id].__validateForm">
+                                                <nz-form-item>
+                                                    <nz-form-control [nzErrorTip]="nameErrorTpl">
+                                                        <input placeholder="输入进行搜索" nz-input
+                                                            (input)="debounceOnInput($event, $event.target?.value, data.id)"
+                                                            formControlName="name" [nzAutocomplete]="auto" />
+                                                        <ng-template #nameErrorTpl let-control>
+                                                            <ng-container *ngIf="control.hasError('required')">
+                                                                请输入成员姓名
+                                                            </ng-container>
+                                                        </ng-template>
+                                                        <nz-autocomplete nzBackfill="true" #auto>
+                                                            <nz-auto-option *ngFor="let option of options"
+                                                                [nzValue]="option.oid" [nzLabel]="option.text"
+                                                                (selectionChange)="onSelect($event,option, data.id)">
+                                                                {{ option.text }}
+                                                            </nz-auto-option>
+                                                        </nz-autocomplete>
+                                                    </nz-form-control>
+                                                </nz-form-item>
+                                            </form>
+                                        </div>
+                                    </ng-template>
+                                </td>
+                                <td>
+                                    <ng-container *ngIf="!editCache[data.id].edit; else numberInputTpl">
+                                        {{ data.number }}
+                                    </ng-container>
+                                    <ng-template #numberInputTpl>
+                                        <form nz-form [formGroup]="editCache[data.id].__validateForm">
+                                            <nz-form-item>
+                                                <nz-form-control [nzErrorTip]="numberErrorTpl">
+                                                    <input type="text" nz-input formControlName="number" />
+                                                    <ng-template #numberErrorTpl let-control>
+                                                        <ng-container *ngIf="control.hasError('required')">
+                                                            请输入工号数字
+                                                        </ng-container>
+                                                        <ng-container *ngIf="control.hasError('money')">
+                                                            请输入合法数字
+                                                        </ng-container>
+                                                    </ng-template>
+                                                </nz-form-control>
+                                            </nz-form-item>
+                                        </form>
+
+                                    </ng-template>
+                                </td>
+                                <td>
+                                    <ng-container *ngIf="!editCache[data.id].edit; else addressInputTpl">
+                                        {{ data.address }}
+                                    </ng-container>
+                                    <ng-template #addressInputTpl>
+                                        <nz-form-item>
+                                            <nz-form-control>
+                                                <input type="text" nz-input name="address"
+                                                    [(ngModel)]="editCache[data.id].data.address" />
+                                            </nz-form-control>
+                                        </nz-form-item>
+                                    </ng-template>
+                                </td>
+                                <td>
+                                    <div class="editable-row-operations"
+                                        *ngIf="!editCache[data.id].edit && !editCache[data.id].new">
+                                        <ng-container *ngIf="!editCache[data.id].edit; else saveTpl">
+                                            <a (click)="startEdit(data.id)"
+                                                *ngIf="!editCache[data.id].edit && !editCache[data.id].new">编辑</a>
+
+                                            <nz-divider nzType="vertical"></nz-divider>
+                                            <a (click)="deleteRow(data.id)">删除</a>
+                                        </ng-container>
+                                        <ng-template #saveTpl>
+                                            <a *ngIf="editCache[data.id].edit && !editCache[data.id].new"
+                                                (click)="saveEdit(data.id)">保存</a>
+                                            <a (click)="savaNew(data.id)"
+                                                *ngIf="editCache[data.id].new && editCache[data.id].edit">添加</a>
+                                            <nz-divider nzType="vertical"></nz-divider>
+                                            <a (click)="deleteRow(data.id)"
+                                                *ngIf="editCache[data.id].new && editCache[data.id].edit">删除</a>
+                                            <a nz-popconfirm nzTitle="Sure to cancel?"
+                                                (nzOnConfirm)="cancelEdit(data.id)"
+                                                *ngIf="editCache[data.id].edit && !editCache[data.id].new">取消</a>
+                                        </ng-template>
+                                    </div>
+                                    <div class="editable-row-operations" style="margin-bottom:20px;"
+                                        *ngIf="editCache[data.id].edit || editCache[data.id].new">
+                                        <ng-container *ngIf="!editCache[data.id].edit; else saveTpl">
+                                            <a (click)="startEdit(data.id)"
+                                                *ngIf="!editCache[data.id].edit && !editCache[data.id].new">编辑</a>
+
+                                            <nz-divider nzType="vertical"></nz-divider>
+                                            <a (click)="deleteRow(data.id)">删除</a>
+                                        </ng-container>
+                                        <ng-template #saveTpl>
+                                            <a *ngIf="editCache[data.id].edit && !editCache[data.id].new"
+                                                (click)="saveEdit(data.id)">保存</a>
+                                            <a (click)="savaNew(data.id)"
+                                                *ngIf="editCache[data.id].new && editCache[data.id].edit">添加</a>
+                                            <nz-divider nzType="vertical"></nz-divider>
+                                            <a (click)="deleteRow(data.id)"
+                                                *ngIf="editCache[data.id].new && editCache[data.id].edit">删除</a>
+                                            <a nz-popconfirm nzTitle="Sure to cancel?"
+                                                (nzOnConfirm)="cancelEdit(data.id)"
+                                                *ngIf="editCache[data.id].edit && !editCache[data.id].new">取消</a>
+                                        </ng-template>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </nz-table>
+                    <nz-divider></nz-divider>
+                    <button nz-button nzType="dashed" nzBlock (click)="addRow()">
+                        <app-icon [type]="'plus'"></app-icon> 新增成员
+                    </button>
+                </div>
+            </app-card>
+        </div>
+        <app-footer-tool-bar>
+            <span footer-toolbar-content style="color:#f5222d">
+                <span *ngIf="invalidCount > 0">
+                    <app-icon [type]="'exclamation-circle'"></app-icon>
+                    {{this.invalidCount > 12 ? 12 : this.invalidCount}}
+                </span>
+
+                <button nz-button [nzLoading]="subBtnLoading" nzType="primary" (click)="submit($event)">提交</button>
+            </span>
+
+        </app-footer-tool-bar>
+    </div>
+</app-content-wrapper>

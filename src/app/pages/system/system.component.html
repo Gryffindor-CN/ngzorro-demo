@@ -1,0 +1,33 @@
+<app-content-wrapper title="详情" [content]="content">
+    <app-card content-wrapper>
+        <div card-content-wrapper>
+            <app-summary [data]="data" [title]="'基础详情'" [border]="'true'"></app-summary>
+            <app-summary [data]="data" [title]="'基础详情'" [border]="'true'"></app-summary>
+            <app-summary [title]="'退货商品'">
+                <nz-table #basicTable extra-content [nzData]="listOfData">
+                    <thead>
+                        <tr>
+                            <th>商品编号</th>
+                            <th>商品名称</th>
+                            <th>商品条码</th>
+                            <th nzAlign="right">数量（件）</th>
+                            <th nzAlign="right">单价</th>
+                            <th nzAlign="right">金额</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of basicTable.data">
+                            <td>{{ data.key }}</td>
+                            <td>{{ data.name }}</td>
+                            <td>{{ data.age }}</td>
+                            <td nzAlign="right">{{ data.amount }}</td>
+                            <td nzAlign="right">{{ data.address }}</td>
+                            <td nzAlign="right">{{ data.price }}</td>
+                        </tr>
+                    </tbody>
+                </nz-table>
+            </app-summary>
+        </div>
+    </app-card>
+
+</app-content-wrapper>

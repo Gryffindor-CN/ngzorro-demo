@@ -1,0 +1,21 @@
+.inner-content {
+  /* padding: 24px; */
+  /* background: #fff; */
+  height: auto;
+}
+.main {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.main .row {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+}
+.main .row .content {
+    flex: 1;
+}
+.main .row .extra {
+    flex: 0 1 auto;
+    text-align: right;
+}

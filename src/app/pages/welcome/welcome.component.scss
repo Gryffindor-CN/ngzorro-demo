@@ -1,0 +1,17 @@
+.ant-form-item-label {
+    color: var(--basic-form-item-label-color);
+    .optional {
+        color: var(--basic-form-item-label-optional-color);
+    }
+}
+.ant-calendar-picker {
+    width: 100%;
+}
+.form-btns {
+   .ant-btn-default {
+    margin-left: 8px;
+   }
+}
+.phone-select {
+    width: 70px;
+  }

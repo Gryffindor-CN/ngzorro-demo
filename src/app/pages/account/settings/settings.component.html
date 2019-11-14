@@ -1,0 +1,176 @@
+<app-content-wrapper title="个人设置">
+    <app-card content-wrapper [bodyStyle]="cardBodyStyle">
+        <nz-layout card-content-wrapper>
+            <nz-sider nzTheme="light">
+                <ul nz-menu nzMode="inline" style="height: 100%">
+                    <li nz-menu-item *ngFor="let menu of menus " [nzSelected]="menu.selected"
+                        (click)="handleMenuTab(menu.key)">
+                        {{menu.text}}
+                    </li>
+                </ul>
+            </nz-sider>
+            <nz-layout>
+                <nz-content>
+                    <div class="account-settings-content-wrapper">
+                        <div class="base-title">
+                            <span *ngIf="selectedMenu === 1">基本设置</span>
+                            <span *ngIf="selectedMenu === 2">安全设置</span>
+                            <span *ngIf="selectedMenu === 3">账号绑定</span>
+                            <span *ngIf="selectedMenu === 4">新消息通知</span>
+                        </div>
+                        <div class="base-view" *ngIf="selectedMenu === 1">
+                            <div class="basw-view-left">
+                                <form nz-form [formGroup]="valiateForm">
+                                    <nz-form-item nz-row>
+                                        <nz-form-label nz-col [nzSm]="24" [nzXs]="24" [nzLg]="24" [nzMd]="24"
+                                            nzNoColon="true" nzFor="email" style="text-align: left">
+                                            邮箱
+                                        </nz-form-label>
+                                        <nz-form-control nz-col [nzSm]="14" [nzXs]="24" [nzLg]="24" [nzMd]="24"
+                                            nzErrorTip="The input is not valid E-mail!">
+                                            <input nz-input formControlName="email" id="email" />
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                    <nz-form-item nz-row>
+                                        <nz-form-label nz-col [nzSm]="24" [nzXs]="24" [nzLg]="24" [nzMd]="24"
+                                            nzNoColon="true" nzFor="nickname" style="text-align: left">
+                                            昵称
+                                        </nz-form-label>
+                                        <nz-form-control nz-col [nzSm]="14" [nzXs]="24" [nzLg]="24" [nzMd]="24"
+                                            nzErrorTip="The input is not valid E-mail!">
+                                            <input nz-input formControlName="nickname" id="nickname" />
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                    <nz-form-item nz-row>
+                                        <nz-form-label nz-col [nzSm]="24" [nzXs]="24" [nzLg]="24" [nzMd]="24"
+                                            nzNoColon="true" style="text-align: left">
+                                            个人简介
+                                        </nz-form-label>
+                                        <nz-form-control nzErrorTip="请填写个人简介" nz-col [nzSm]="14" [nzXs]="24" [nzLg]="24"
+                                            [nzMd]="24">
+                                            <input nz-input placeholder="个人简介" formControlName="description" />
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                    <nz-form-item nz-row>
+                                        <nz-form-label nz-col [nzSm]="24" [nzXs]="24" [nzLg]="24" [nzMd]="24"
+                                            nzNoColon="true" nzFor="description" style="text-align: left">
+                                            国家/地区
+                                        </nz-form-label>
+                                        <nz-form-control nz-col [nzSm]="14" [nzXs]="24" [nzLg]="24" [nzMd]="24">
+                                            <nz-select formControlName="country">
+                                                <nz-option nzValue="1" nzLabel="中国"></nz-option>
+                                                <nz-option nzValue="2" nzLabel="美国"></nz-option>
+                                                <nz-option nzValue="3" nzLabel="日本"></nz-option>
+                                            </nz-select>
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                    <nz-form-item nz-row>
+                                        <nz-form-label nz-col [nzSm]="24" [nzXs]="24" [nzLg]="24" [nzMd]="24"
+                                            nzNoColon="true" style="text-align: left">
+                                            所在省市区
+                                        </nz-form-label>
+                                        <nz-form-control nz-col [nzSm]="14" [nzXs]="24" [nzLg]="24" [nzMd]="24"
+                                            nzErrorTip="请选择所在省市区">
+                                            <nz-cascader formControlName="province" nzPlaceHolder="请选择所在省市区"
+                                                [nzLoadData]="loadData" [nzChangeOnSelect]="'true'"
+                                                [nzChangeOn]="changeOn" (ngModelChange)="onProvinceSelect($event)">
+                                            </nz-cascader>
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                    <nz-form-item nz-row>
+                                        <nz-form-label nz-col [nzSm]="24" [nzXs]="24" [nzLg]="24" [nzMd]="24"
+                                            nzNoColon="true" nzFor="address" style="text-align: left">
+                                            街道地址
+                                        </nz-form-label>
+                                        <nz-form-control nz-col [nzSm]="14" [nzXs]="24" [nzLg]="24" [nzMd]="24">
+                                            <input type="text" nz-input formControlName="address">
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                    <nz-form-item>
+                                        <nz-form-label nz-col [nzSm]="24" [nzXs]="24" [nzLg]="24" [nzMd]="24"
+                                            nzNoColon="true" nzFor="phone" style="text-align: left">
+                                            联系电话
+                                        </nz-form-label>
+                                        <nz-form-control nz-col [nzSm]="14" [nzXs]="24" [nzLg]="24" [nzMd]="24">
+                                            <nz-input-group [nzSize]="'default'">
+                                                <div nz-col nzSpan="8">
+                                                    <input type="text" nz-input formControlName="code" />
+                                                </div>
+                                                <div nz-col nzSpan="16">
+                                                    <input type="text" nz-input formControlName="phone" />
+                                                </div>
+                                            </nz-input-group>
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                    <div class="form-btns" nz-col nzSpan="24">
+                                        <button nz-button nzType="primary" (click)="submit($event)">更新基本信息</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="basw-view-right">
+                                <div class="avatar-title">
+                                    头像
+                                </div>
+                                <div class="avatar-wrapper">
+                                    <nz-avatar style="width:100%;height:100%"
+                                        nzSrc="//gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png">
+                                    </nz-avatar>
+                                </div>
+                                <span style="margin-left:24px;">
+                                    <nz-upload nzAction="https://jsonplaceholder.typicode.com/posts/">
+                                        <button nz-button><i nz-icon nzType="upload"></i><span>更换头像</span></button>
+                                    </nz-upload>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="base-view" *ngIf="selectedMenu === 2">
+                            <nz-list [nzDataSource]="securityData" [nzRenderItem]="item" [nzItemLayout]="'horizontal'">
+                                <ng-template #item let-item>
+                                    <nz-list-item [nzActions]="[action]">
+                                        <nz-list-item-meta [nzTitle]="item.title" [nzDescription]="item.text">
+                                        </nz-list-item-meta>
+                                        <ng-template #action>
+                                            <a href="">修改</a>
+                                        </ng-template>
+                                    </nz-list-item>
+                                </ng-template>
+                            </nz-list>
+                        </div>
+                        <div class="base-view" *ngIf="selectedMenu === 3">
+                            <nz-list [nzDataSource]="accountData" [nzRenderItem]="item" [nzItemLayout]="'horizontal'">
+                                <ng-template #item let-item>
+                                    <nz-list-item [nzActions]="[action]">
+                                        <nz-list-item-meta [nzTitle]="item.title" [nzDescription]="item.text"
+                                            [nzAvatar]="avatar">
+                                            <ng-template #avatar>
+                                                <nz-avatar [nzShape]="'square'" [nzSize]="64" [nzIcon]="'user'">
+                                                </nz-avatar>
+                                            </ng-template>
+                                        </nz-list-item-meta>
+                                        <ng-template #action>
+                                            <a href="">绑定</a>
+                                        </ng-template>
+                                    </nz-list-item>
+                                </ng-template>
+                            </nz-list>
+                        </div>
+                        <div class="base-view" *ngIf="selectedMenu === 4">
+                            <nz-list [nzDataSource]="messageData" [nzRenderItem]="item" [nzItemLayout]="'horizontal'">
+                                <ng-template #item let-item>
+                                    <nz-list-item [nzActions]="[action]">
+                                        <nz-list-item-meta [nzTitle]="item.title" [nzDescription]="item.text">
+                                        </nz-list-item-meta>
+                                        <ng-template #action>
+                                            <nz-switch [ngModel]="true" nzCheckedChildren="开" nzUnCheckedChildren="关">
+                                            </nz-switch>
+                                        </ng-template>
+                                    </nz-list-item>
+                                </ng-template>
+                            </nz-list>
+                        </div>
+                    </div>
+                </nz-content>
+            </nz-layout>
+        </nz-layout>
+    </app-card>
+</app-content-wrapper>

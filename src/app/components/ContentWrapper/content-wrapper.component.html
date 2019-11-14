@@ -1,0 +1,87 @@
+<div>
+    <div class="header-wrapper">
+        <div class="detail">
+            <div class="main">
+                <div class="row">
+                    <div class="title">{{title}}</div>
+                    <div class="action" *ngIf="buttonGroup">
+                        <ng-container *ngIf="buttonGroup">
+                            <nz-button-group *ngIf="buttonGroup.group.length > 0" class="btn-group">
+                                <ng-container *ngFor="let btn of mainButtons">
+                                    <button *ngIf="btn.disabled" disabled nz-button [nzType]="'default'"
+                                        (click)="btn.onClick">{{ btn.text }}</button>
+                                    <button *ngIf="!btn.disabled" nz-button [nzType]="'default'"
+                                        (click)="btn.onClick">{{ btn.text }}</button>
+                                </ng-container>
+                                <ng-container *ngIf="ellipsisButtons && ellipsisButtons.length">
+                                    <button nz-button nz-dropdown nzPlacement="bottomRight" [nzDropdownMenu]="menu">
+                                        <app-icon [type]="'ellipsis'" [size]="14"></app-icon>
+                                    </button>
+                                    <nz-dropdown-menu #menu="nzDropdownMenu">
+                                        <ul nz-menu>
+                                            <ng-container *ngFor="let btn of ellipsisButtons">
+                                                <li nz-menu-item *ngIf="btn.disabled" [nzDisabled]="'true'">
+                                                    {{ btn.text }}
+                                                </li>
+                                                <li nz-menu-item *ngIf="!btn.disabled">
+                                                    {{ btn.text }}
+                                                </li>
+                                            </ng-container>
+                                        </ul>
+                                    </nz-dropdown-menu>
+                                </ng-container>
+                            </nz-button-group>
+                            <ng-container *ngIf="buttonGroup.primaryBtn.text !== ''">
+                                <button nz-button [nzType]="'primary'" *ngIf="buttonGroup.primaryBtn.disabled"
+                                    disabled>{{buttonGroup.primaryBtn.text }}</button>
+                                <button nz-button [nzType]="'primary'"
+                                    *ngIf="!buttonGroup.primaryBtn.disabled">{{buttonGroup.primaryBtn.text }}</button>
+                            </ng-container>
+                        </ng-container>
+                    </div>
+                </div>
+                <div class="row">
+                    <div nz-row *ngIf="content" class="content">
+                        <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="8" class="col-item clearfix"
+                            *ngFor="let item of content">
+                            <div class="col-item-name">
+                                {{item.name}}：
+                            </div>
+                            <div class="col-item-value">
+                                {{item.value}}
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="extraContent" class="extra-content">
+                        <div *ngFor="let data of extraContent" class="content-list">
+                            <p class="list-name">{{ data.name }}</p>
+                            <p class="{{data.className}}">{{ data.value }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="search-wrapper" *ngIf="showSearchBar">
+                    <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+                        <input type="text" [(ngModel)]="searchValue" nz-input placeholder="请输入要查找的内容" />
+                    </nz-input-group>
+                    <ng-template #suffixIconButton>
+                        <button nz-button nzType="primary" [nzLoading]="searchBtnLoading" nzSearch
+                            (click)="doSearch($event)">查找</button>
+                    </ng-template>
+                </div>
+            </div>
+
+        </div>
+
+        <nz-tabset [nzTabBarStyle]="tabBarStyle" (nzSelectedIndexChange)="tabSelectedChange($event)"
+            *ngIf="tabs.length">
+            <nz-tab *ngFor="let tab of tabs" [nzTitle]="tab.title">
+            </nz-tab>
+        </nz-tabset>
+    </div>
+    <div class="content-wrapper clearfix">
+        <ng-content select="[content-wrapper]">
+        </ng-content>
+
+    </div>
+
+</div>

@@ -1,0 +1,39 @@
+<div class="summary-wrapper">
+    <div class="content">
+        <div class="title" *ngIf="title">{{title}}</div>
+        <ng-content select="[extra-content]"></ng-content>
+        <div nz-row *ngIf="data && data.length">
+            <div class="col-item" nz-col [nzXl]="xlGrid" [nzLg]="lgGrid" [nzMd]="mdGrid" [nzSm]="smGrid" [nzXs]="xsGrid"
+                *ngFor="let item of data">
+                <span class="col-item-name">{{ item.name }}：</span>
+                <span *ngIf="item.type === 'text' || !item.type" class="col-item-value">{{ item.value }}</span>
+                <span *ngIf="item.type === 'money'" class="col-item-value">￥ {{ moneyFormat(item.value) }}</span>
+                <span *ngIf="item.type === 'time'" class="col-item-value">{{ timeFormat(item.value) }}</span>
+                <span *ngIf="item.type === 'img'" class="col-item-value">
+                    <a [href]="item.value" class="img-link" target="blank">
+                        <img [src]="item.value" alt="">
+                    </a>
+                </span>
+                <span *ngIf="item.type === 'img-multiple'" class="col-item-value">
+                    <a [href]="img" class="img-link" target="blank" *ngFor="let img of item.value">
+                        <img [src]="img" alt="">
+                    </a>
+                </span>
+                <span *ngIf="item.type === 'link'" class="col-item-value">
+                    <a [href]="item.value" class="img-link" target="blank">
+                        {{item.name}}
+                    </a>
+                </span>
+                <span *ngIf="item.type === 'array'" class="col-item-value">
+                    <ul>
+                        <ng-container *ngFor="let itemm of item.value;let i = index">
+                            <li *ngIf="i !== item.value.length-1"> {{ itemm }}，</li>
+                            <li *ngIf="i === item.value.length-1"> {{ itemm }}</li>
+                        </ng-container>
+                    </ul>
+                </span>
+            </div>
+        </div>
+        <nz-divider *ngIf="border"></nz-divider>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+.form-btns {
+    @media screen and (max-width: 992px) {
+        margin-left: 72px;
+      }
+    margin-top: 4px;
+    .ant-btn-primary {
+        margin-right: 10px;
+    }
+} 
+.ant-form-item-label {
+    text-align: left;
+    width: 72px;
+}
+
+.ant-form-inline .ant-form-item {
+    margin-bottom: 8px;
+}
+.ant-form-inline .ant-form-item{
+    margin-right: 0;
+}

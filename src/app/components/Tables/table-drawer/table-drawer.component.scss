@@ -1,0 +1,44 @@
+.drawer-header {
+    color: var(--primary);
+    font-size: 14px;
+    font-weight: 700;
+}
+.drawer-content {
+    margin-top: 40px;
+}
+.drawer-footer {
+    height: 40px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.drawer-footer {
+    height: 40px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    .footer-btns {
+        text-align: right;
+        button {
+            display: inline;
+            margin-right: 10px; 
+        }
+    }
+}
+.divider {
+    position: absolute;
+    width: 100%;
+    height:0;
+    border: 0.5px solid #e8eaec;
+    right: 0;
+    z-index: 10;
+    display: block;
+}
+.header-divider {
+    top: 60px;
+}
+.footer-divider {
+    bottom: 50px;
+}
